@@ -161,21 +161,9 @@ receiver detects the situation and follows a valid transition in the state machi
 | T15 | Leader heartbeat lost | followers → ACC, election, `COORDINATOR` broadcast |
 
 ## 11. Related models
-
-### 11.1 Platoon membership — state machine
-![Platoon membership state machine](diagrams/01_membership_sm.png)
-
-Editable source: [01_membership_sm.drawio](diagrams/01_membership_sm.drawio)
-
-### 11.2 Communication link health — state machine
-![Communication link health state machine](diagrams/02_comm_link_sm.png)
-
-Editable source: [02_comm_link_sm.drawio](diagrams/02_comm_link_sm.drawio)
-
-### 11.3 Join handshake — sequence diagram
-![Join handshake sequence diagram](diagrams/03_join_sequence.png)
-
-Editable source: [03_join_sequence.drawio](diagrams/03_join_sequence.drawio)
+- [01_membership_sm.drawio](diagrams/01_membership_sm.drawio): platoon membership state machine
+- [02_comm_link_sm.drawio](diagrams/02_comm_link_sm.drawio): communication link health state machine
+- [03_join_sequence.drawio](diagrams/03_join_sequence.drawio): join handshake sequence diagram
 
 Each `.drawio` file has a `.png` export next to it in the same folder.
 
@@ -212,7 +200,7 @@ what makes short gaps safe. It also shows reliable delivery built on top of unre
 ### 12.3 Self-healing platoon
 The platoon repairs itself when something goes wrong, without a central server:
 - **Leader failure:** if the leader's heartbeat is lost, followers fall back to radar-only ACC
-  and elect a new leader (`ELECTION` → `COORDINATOR`, Bully-style, §5).
+    and elect a new leader (`ELECTION` → `ANSWER` → `COORDINATOR`, Bully-style, §5).
 - **Member failure or departure:** the leader removes the truck and broadcasts a new `TOPOLOGY`.
   The truck behind it closes the gap to its new predecessor.
 - **Cut-in vehicle:** the platoon splits (`SPLIT_REQ`) and merges again (`MERGE_REQ`) when the gap is clear.
