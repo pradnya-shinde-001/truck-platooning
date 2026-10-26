@@ -90,8 +90,9 @@ Receivers **drop** a message when the HMAC is invalid, when `seq_no` ≤ last se
 | 0x20 | `EMERGENCY_BRAKE` | reliable, high priority | decel target | leader or any truck detects a hazard |
 | 0x21 | `TUNNEL_AHEAD` | reliable | distance, expected outage duration | map / V2I says comm loss is coming |
 | 0x30 | `ELECTION` | reliable | candidate health score | leader lost |
-| 0x31 | `COORDINATOR` | reliable | new leader ID | election won |
-| 0x32 | `HANDOVER_REQ` | reliable | proposed new leader | planned rotation / driver fatigue |
+| 0x31 | `ANSWER` | reliable | — | reply to `ELECTION` from a lower-scored truck: "I am alive and higher, stop your bid" |
+| 0x32 | `COORDINATOR` | reliable | new leader ID | election won |
+| 0x33 | `HANDOVER_REQ` | reliable | proposed new leader | planned rotation / driver fatigue |
 | 0x7F | `ACK` | — | acked `seq_no`, msg_type | response to any message with bit0 set |
 
 ## 6. Reliability
@@ -160,10 +161,21 @@ receiver detects the situation and follows a valid transition in the state machi
 | T15 | Leader heartbeat lost | followers → ACC, election, `COORDINATOR` broadcast |
 
 ## 11. Related models
-- [`diagrams/01_membership_sm.drawio`](../diagrams/01_membership_sm.drawio): platoon membership state machine
-- [`diagrams/02_comm_link_sm.drawio`](../diagrams/02_comm_link_sm.drawio): communication link health state machine
-- [`diagrams/04_leader_election_sm.drawio`](../diagrams/04_leader_election_sm.drawio): leader election state machine
-- [`diagrams/06_join_sequence.drawio`](../diagrams/06_join_sequence.drawio): join handshake sequence diagram
+
+### 11.1 Platoon membership — state machine
+![Platoon membership state machine](diagrams/01_membership_sm.png)
+
+Editable source: [01_membership_sm.drawio](diagrams/01_membership_sm.drawio)
+
+### 11.2 Communication link health — state machine
+![Communication link health state machine](diagrams/02_comm_link_sm.png)
+
+Editable source: [02_comm_link_sm.drawio](diagrams/02_comm_link_sm.drawio)
+
+### 11.3 Join handshake — sequence diagram
+![Join handshake sequence diagram](diagrams/03_join_sequence.png)
+
+Editable source: [03_join_sequence.drawio](diagrams/03_join_sequence.drawio)
 
 Each `.drawio` file has a `.png` export next to it in the same folder.
 
