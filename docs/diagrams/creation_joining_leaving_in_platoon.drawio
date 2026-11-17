@@ -365,10 +365,13 @@
           <mxGeometry height="790" width="120" x="360" as="geometry" />
         </mxCell>
         <mxCell id="wjokbwpmfZQ1Q9IjJA86-198" parent="1" style="shape=partialRectangle;whiteSpace=wrap;html=1;right=0;top=0;bottom=0;fillColor=none;routingCenterX=-0.5;" value="" vertex="1">
-          <mxGeometry height="800" width="120" x="775" as="geometry" />
+          <mxGeometry height="800" width="15" x="775" as="geometry" />
         </mxCell>
         <mxCell id="bzgB4q0zhiNU4F2AlIAS-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Truck Joined" vertex="1">
           <mxGeometry height="40" width="140" x="590" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="AYYDgpEQdieJzQsHEbiD-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="End" vertex="1">
+          <mxGeometry height="30" width="60" x="835" y="500" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
